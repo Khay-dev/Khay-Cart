@@ -1,8 +1,8 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import type { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import type { FC } from "react";
 
 interface Category {
 	productName: string;
@@ -21,7 +21,7 @@ interface Products {
 const Home: FC = () => {
 	return (
 		<div className="mx-auto h-full px-0 w-full container">
-			<main >
+			<main>
 				<Navbar />
 				<div className="bg-[url('/assets/home.png')] bg-center bg-cover bg-no-repeat h-screen w-full">
 					<div className="flex flex-col gap-y-3.5 text-white lg:p-40 lg:py-48 pt-60 w-[90%] mx-auto lg:mx-0 lg:w-fit text-center">
@@ -115,61 +115,61 @@ const Category: FC = () => {
 						</div>
 					))}
 				</div>
-        </div>
-				<section className="lg:px-10 px-7 lg:py-14  pb-14 pt-5">
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
-						<div className=" bg-[url('/assets/new.png')] bg-center bg-cover bg-no-repeat h-[500px] w-full flex flex-col gap-y-3.5 items-center justify-center">
-							<h1 className="font-normal text-2xl text-white">New Arrivals</h1>
-							<button
-								type="button"
-								className="uppercase w-[60%] font-normal text-sm text-[#262626] bg-white py-2 md:py-3"
-							>
-								Shop the latest .
-							</button>
-						</div>
-						<div className=" bg-[url('/assets/best.png')] bg-center bg-cover bg-no-repeat h-[500px] w-full flex flex-col gap-y-3.5 items-center justify-center">
-							<h1 className="font-normal text-2xl text-white">Best Sellers</h1>
-							<button
-								type="button"
-								className="uppercase w-[60%] font-normal text-sm text-[#262626] bg-white py-2 md:py-3"
-							>
-								Shop the favourite.
-							</button>
-						</div>
-						<div className=" bg-[url('/assets/holiday.png')] bg-center bg-cover bg-no-repeat h-[500px] w-full flex flex-col gap-y-3.5 items-center justify-center">
-							{" "}
-							<h1 className="font-normal text-2xl text-white">
-								The Holiday Outfit
-							</h1>
-							<button
-								type="button"
-								className="uppercase w-[60%]  font-normal text-sm text-[#262626] bg-white py-2 md:py-3"
-							>
-								Shop the occasion
-							</button>
-						</div>
-					</div>
-				</section>
-				<section className=" flex flex-col justify-center items-center text-center px-5 py-9 bg-[url('/assets/bgsec.png')] bg-no-repeat bg-center bg-cover relative  h-auto lg:h-[40vh] ">
-					<div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
-					<div className="relative z-10">
-						<h2 className="text-white text-2xl lg:text-3xl font-normal font-inter">
-							We’re on a Mission To Clean Up the Industry
-						</h2>
-						<p className="text-white text-sm lg:text-base font-normal font-inter">
-							Read about our progress in our latest Impact Report.
-						</p>
-						<Link href="">
-							<button
-								type="button"
-								className="font-inter uppercase mx-auto mt-5 font-normal text-sm text-[#262626] bg-white py-2 px-10"
-							>
-								learn more
-							</button>
-						</Link>
-					</div>
-				</section>
 			</div>
+			<section className="lg:px-10 px-7 lg:py-14  pb-14 pt-5">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
+					<div className=" bg-[url('/assets/new.png')] bg-center bg-cover bg-no-repeat h-[500px] w-full flex flex-col gap-y-3.5 items-center justify-center">
+						<h1 className="font-normal text-2xl text-white">New Arrivals</h1>
+						<button
+							type="button"
+							className="uppercase w-[60%] font-normal text-sm text-[#262626] bg-white py-2 md:py-3"
+						>
+							Shop the latest .
+						</button>
+					</div>
+					<div className=" bg-[url('/assets/best.png')] bg-center bg-cover bg-no-repeat h-[500px] w-full flex flex-col gap-y-3.5 items-center justify-center">
+						<h1 className="font-normal text-2xl text-white">Best Sellers</h1>
+						<button
+							type="button"
+							className="uppercase w-[60%] font-normal text-sm text-[#262626] bg-white py-2 md:py-3"
+						>
+							Shop the favourite.
+						</button>
+					</div>
+					<div className=" bg-[url('/assets/holiday.png')] bg-center bg-cover bg-no-repeat h-[500px] w-full flex flex-col gap-y-3.5 items-center justify-center">
+						{" "}
+						<h1 className="font-normal text-2xl text-white">
+							The Holiday Outfit
+						</h1>
+						<button
+							type="button"
+							className="uppercase w-[60%]  font-normal text-sm text-[#262626] bg-white py-2 md:py-3"
+						>
+							Shop the occasion
+						</button>
+					</div>
+				</div>
+			</section>
+			<section className=" flex flex-col justify-center items-center text-center px-5 py-9 bg-[url('/assets/bgsec.png')] bg-no-repeat bg-center bg-cover relative  h-auto lg:h-[40vh] ">
+				<div className="absolute top-0 left-0 w-full h-full bg-black opacity-50" />
+				<div className="relative z-10">
+					<h2 className="text-white text-2xl lg:text-3xl font-normal font-inter">
+						We’re on a Mission To Clean Up the Industry
+					</h2>
+					<p className="text-white text-sm lg:text-base font-normal font-inter">
+						Read about our progress in our latest Impact Report.
+					</p>
+					<Link href="">
+						<button
+							type="button"
+							className="font-inter uppercase mx-auto mt-5 font-normal text-sm text-[#262626] bg-white py-2 px-10"
+						>
+							learn more
+						</button>
+					</Link>
+				</div>
+			</section>
+		</div>
 	);
 };
 

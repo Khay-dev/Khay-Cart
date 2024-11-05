@@ -73,7 +73,7 @@ const About = () => {
 					/>
 				</div>
 			</section>
-			<section className=" bg-[url('/assets/randab.png')] bg-center bg-cover bg-no-repeat h-[400px] lg:h-[70vh] w-full"/>
+			<section className=" bg-[url('/assets/randab.png')] bg-center bg-cover bg-no-repeat h-[400px] lg:h-[70vh] w-full" />
 			<section className=" w-full h-fit flex flex-col-reverse md:flex-row lg:flex-row">
 				<div className="w-full lg:w-2/4 mx-auto lg:h-auto md:h-[40vh]">
 					<Image

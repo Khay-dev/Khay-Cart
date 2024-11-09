@@ -6,9 +6,10 @@ import type React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useQuery } from "@tanstack/react-query";
-import type { Product, ProductProps} from "../types";
+import type { Product, ProductProps, size} from "../types";
 import { Skeleton } from "@/components/ui/skeleton";
-import { SideBar } from "../men/page";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { useState } from "react";
 const MenProductsPage: React.FC = () => {
 	const { data, isLoading, error } = useQuery<Product[]>({
 		queryKey: ["menData"],
@@ -28,6 +29,164 @@ const MenProductsPage: React.FC = () => {
 	);
 };
 
+const SideBar: React.FC<ProductProps> = ({ productData }) => {
+	const waistSizes: size[] = [
+		{
+			value: "36",
+		},
+		{
+			value: "38",
+		},
+		{
+			value: "40",
+		},
+		{
+			value: "42",
+		},
+		{
+			value: "44",
+		},
+		{
+			value: "46",
+		},
+		{
+			value: "48",
+		},
+		{
+			value: "50",
+		},
+	];
+
+	const ClothesSizes: size[] = [
+		{
+			value: "XXS",
+		},
+		{
+			value: "XS",
+		},
+		{
+			value: "S",
+		},
+		{
+			value: "M",
+		},
+		{
+			value: "L",
+		},
+		{
+			value: "XL",
+		},
+		{
+			value: "XXL",
+		},
+		{
+			value: "XXXL",
+		},
+	];
+	const [showSize, setShowSize] = useState<boolean>(false);
+
+	const handleShowSize = () => {
+		setShowSize(!showSize);
+	};
+	return (
+		<div>
+			<div className="hidden lg:flex flex-col gap-y-5 basis-1/5 shrink-0 sticky top-5">
+				<span className="font-inter font-normal text-xs text-black">
+					{productData.length} Products{" "}
+				</span>
+				<div className="h-px bg-[#DDDBDC] w-full" />
+				<div className="flex flex-col gap-y-5">
+					<h1 className="font-inter font-semibold text-sm mb-2">Size</h1>
+					<div>
+						<p className="font-inter font-normal text-xs text-black">Waist</p>
+						<div className="mt-2 grid grid-cols-4 gap-1">
+							{waistSizes.map((waistSize) => (
+								<button
+									type="button"
+									key={waistSize.value}
+									className="bg-[#F5F4F4] p-3 font-inter font-normal text-xs hover:bg-text hover:text-gray-300"
+								>
+									{waistSize.value}
+								</button>
+							))}
+						</div>
+					</div>
+					<div>
+						<p className="font-inter font-normal text-xs text-black">
+							Clothing
+						</p>
+						<div className="mt-2 grid grid-cols-4 gap-1">
+							{ClothesSizes.map((clotheSize) => (
+								<button
+									type="button"
+									key={clotheSize.value}
+									className="bg-[#F5F4F4] p-3 font-inter font-normal text-xs  hover:bg-text hover:text-white"
+								>
+									{clotheSize.value}
+								</button>
+							))}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="flex lg:hidden flex-col gap-y-5 basis-1/5 shrink-0">
+				<span className="font-inter font-normal text-xs text-black">
+					249 Products
+				</span>
+				<div className="flex flex-col gap-y-5">
+					<div className="flex items-center justify-between">
+						<h1 className="font-inter font-semibold text-sm mb-2 text-black">
+							Size
+						</h1>
+						<button type="button" onClick={handleShowSize}>
+							{showSize ? (
+								<IoIosArrowDown className="font-inter font-semibold text-sm mb-2 text-black" />
+							) : (
+								<IoIosArrowUp className="font-inter font-semibold text-sm mb-2 text-black" />
+							)}
+						</button>
+					</div>
+					{showSize && (
+						<div className="flex flex-col gap-y-10">
+							<div>
+								<p className="font-inter font-normal text-xs text-black">
+									Waist
+								</p>
+								<div className="mt-2 grid grid-cols-4 gap-1">
+									{waistSizes.map((waistSize) => (
+										<button
+											type="button"
+											key={waistSize.value}
+											className="bg-[#F5F4F4] p-3 font-inter font-normal text-xs"
+										>
+											{waistSize.value}
+										</button>
+									))}
+								</div>
+							</div>
+							<div>
+								<p className="font-inter font-normal text-xs text-black">
+									Clothing
+								</p>
+								<div className="mt-2 grid grid-cols-4 gap-1">
+									{ClothesSizes.map((clotheSize) => (
+										<button
+											type="button"
+											key={clotheSize.value}
+											className="bg-[#F5F4F4] p-3 font-inter font-normal text-xs"
+										>
+											{clotheSize.value}
+										</button>
+									))}
+								</div>
+							</div>
+						</div>
+					)}
+				</div>
+			</div>
+		</div>
+	);
+};
 
 
 const MainBar = ({ productData, isLoading, error }: ProductProps) => {

@@ -31,7 +31,7 @@ const MenProductsPage: React.FC = () => {
 	);
 };
 
-export const SideBar: React.FC<ProductProps> = ({ productData }) => {
+const SideBar: React.FC<ProductProps> = ({ productData }) => {
 	const waistSizes: size[] = [
 		{
 			value: "36",
@@ -155,7 +155,7 @@ export const SideBar: React.FC<ProductProps> = ({ productData }) => {
 									Waist
 								</p>
 								<div className="mt-2 grid grid-cols-4 gap-1">
-									{waistSizes.map((waistSize, index) => (
+									{waistSizes.map((waistSize) => (
 										<button
 											type="button"
 											key={waistSize.value}
@@ -171,7 +171,7 @@ export const SideBar: React.FC<ProductProps> = ({ productData }) => {
 									Clothing
 								</p>
 								<div className="mt-2 grid grid-cols-4 gap-1">
-									{ClothesSizes.map((clotheSize, index) => (
+									{ClothesSizes.map((clotheSize) => (
 										<button
 											type="button"
 											key={clotheSize.value}

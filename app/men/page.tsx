@@ -31,7 +31,7 @@ const MenProductsPage: React.FC = () => {
 	);
 };
 
-const SideBar: React.FC<ProductProps> = ({ productData }) => {
+export const SideBar: React.FC<ProductProps> = ({ productData }) => {
 	const waistSizes: size[] = [
 		{
 			value: "36",
@@ -106,7 +106,7 @@ const SideBar: React.FC<ProductProps> = ({ productData }) => {
 								<button
 									type="button"
 									key={waistSize.value}
-									className="bg-[#F5F4F4] p-3 font-inter font-normal text-xs hover:bg-text hover:text-white"
+									className="bg-[#F5F4F4] p-3 font-inter font-normal text-xs hover:bg-text hover:text-gray-300"
 								>
 									{waistSize.value}
 								</button>
@@ -223,30 +223,7 @@ const MainBar = ({ productData, isLoading, error }: ProductProps) => {
 			<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 w-full">
 				{displayedProducts.length > 0 ? (
 					displayedProducts.map((item) => (
-						<Link href={`/men/${item.id}`} key={item.id}>
-							<div className="w-full cursor-pointer ">
-								<div className="w-full aspect-[330/392]">
-									<img
-										src={item.image || "/assets/image.png"}
-										alt={item.title}
-										className="w-full h-full object-cover rounded-md border border-gray-100 p-2 shadow-sm"
-										onError={(e) => {
-											e.currentTarget.style.display = "none";
-										}}
-									/>
-								</div>{" "}
-								<div className="mt-3.5 flex justify-between">
-									<div className="flex flex-col gap-y-1.5 w-full">
-										<h3 className="text-xs text-primary font-inter font-normal w-[90%] ">
-											{item.title}
-										</h3>
-									</div>
-									<span className="text-xs font-semibold  font-inter text-primary">
-										${item.price}
-									</span>
-								</div>
-							</div>
-						</Link>
+						<MenItems key={item.id} item={item}/>
 					))
 				) : (
 					<div className="flex items-center justify-center w-full h-full">
@@ -257,5 +234,39 @@ const MainBar = ({ productData, isLoading, error }: ProductProps) => {
 		</div>
 	);
 };
+
+
+function MenItems({item}: {item: Product}){
+	return(
+		<Link href={`/men/${item.id}`}>
+			<div className="w-full cursor-pointer ">
+				<div className="w-full aspect-[330/392]">
+					<img
+						src={item.image || "/assets/image.png"}
+						alt={item.title}
+						className="w-full h-full object-cover rounded-md border border-gray-100 p-2 shadow-sm"
+						onError={(e) => {
+							e.currentTarget.style.display = "none";
+						}}
+					/>
+				</div>{" "}
+				<div className="mt-3.5 flex justify-between">
+					<div className="flex flex-col gap-y-1.5 w-full">
+						<h3 className="text-xs text-primary font-inter font-normal w-[90%] ">
+							{item.title}
+						</h3>
+					</div>
+					<span className="text-xs font-semibold  font-inter text-primary">
+						${item.price}
+					</span>
+				</div>
+			</div>
+		</Link>
+	)
+}
+
+
+
+
 
 export default MenProductsPage;

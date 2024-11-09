@@ -77,7 +77,7 @@ const MainBar = ({ productData, isLoading, error }: ProductProps) => {
 
 function WomenItems({ item }: { item: Product }) {
 	return (
-		<Link href={`/men/${item.id}`}>
+		<Link href={`/women/${item.id}`}>
 			<div className="w-full cursor-pointer ">
 				<div className="w-full aspect-[330/392]">
 					<img

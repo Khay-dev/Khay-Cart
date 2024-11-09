@@ -1,3 +1,4 @@
+
 "use client";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,7 +9,18 @@ import { IoCartOutline } from "react-icons/io5";
 import { CiMenuBurger } from "react-icons/ci";
 import { IoIosClose } from "react-icons/io";
 import { useState } from "react";
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet";
 import React from "react";
+import { Cart } from "./cart";
 
 const Header = () => {
     return (
@@ -174,18 +186,58 @@ const Navbar = () => {
                         K H A Y - C A R T
                     </Link>
                 </div>
-
-                <div className="flex items-center gap-x-4">
-                    <button type="button">
-                        <IoSearchSharp />
-                    </button>
-                    <button type="button">
-                        <LuUser2 />
-                    </button>
-                    <button type="button">
-                        <IoCartOutline />
-                    </button>
-                </div>
+                <Sheet>
+                    <div className="flex items-center gap-x-4">
+                        <button type="button">
+                            <IoSearchSharp />
+                        </button>
+                        <button type="button">
+                            <LuUser2 />
+                        </button>
+                        <SheetTrigger asChild>
+                            <button type="button">
+                                <IoCartOutline />
+                            </button>
+                        </SheetTrigger>
+                        <SheetContent>
+                            <SheetHeader>
+                                <SheetDescription className="text-right">
+                                    <SheetClose className="p-3 lg:p-6">
+                                        <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        />
+                                        <g clip-path="url(#clip0_79_1575)">
+                                            <path
+                                                d="M18.75 5.25L5.25 18.75"
+                                                stroke="#262626"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="M18.75 18.75L5.25 5.25"
+                                                stroke="#262626"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_79_1575">
+                                                <rect width="24" height="24" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </SheetClose>
+                                </SheetDescription>
+                            </SheetHeader>
+                            <Cart />
+                        </SheetContent>
+                    </div>
+                </Sheet>
             </div>
             <div />
             <Submenu />
